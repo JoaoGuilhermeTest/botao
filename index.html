@@ -7,33 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+        :root{
+            --bg-color: #eee;
+            --btt-color: #555;
+            --btt-bg-color: #ccc;
+            --tx-color: #111;
+            --bx-top-color: #fff;
+            --bx-down-color: #aaa;
+            --btt-hvr-color: #bbb;
+        }
+        .dark_mode:root{
+            --bg-color: #222;
+            --btt-color: #aaa;
+            --btt-bg-color: #444;
+            --tx-color: #eee;
+            --bx-top-color: #1e1e1e;
+            --bx-down-color: #333;
+            --btt-hvr-color: #555;
+        }
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        label{
+            position: absolute;
+            top: 2%;
+            left: 2%;
+            cursor: pointer;
+            color: var(--btt-color);
+        }
         body{
             font-family: 'Poppins', sans-serif;
             font-size: 15px;
-            background-color: #eee;
+            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+        h1{
+            color: var(--tx-color);
+        }
         .content{
             width: 80%;
             height: 30%;
+            background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             border-radius: 20px;
-            filter: drop-shadow(4px 4px 10px #fff);
-            box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
-                        10px 25px 10px rgba(0, 0, 0, 0.05),
-                        15px 20px 20px rgba(0, 0, 0, 0.05),
-                        inset -10px -10px 15px rgba(255, 255, 255, 0.9);
+            box-shadow: 8px 8px 15px var(--bx-down-color),
+                        -10px -10px 15px var(--bx-top-color);
+        }
+        .down-content{
+            background-color: var(--bg-color);
+            transform: translate(10px, 8px);
+            box-shadow: -10px -8px var(--bx-down-color),
+                        inset -10px -8px var(--bg-color) ;
+            transition: .3s;
+        }
+        .up-content{
+            transform: translate(0, 0);
+            transition: .3s;
         }
         .text{
             margin: 20px;
@@ -48,28 +85,33 @@
             width: 30%;
             height: 35px;
             border: none;
-            color: #555;
+            color: var(--btt-color);
             border-radius: 10px;
-            background-color: #ccc;
+            background-color: var(--btt-bg-color);
             cursor: pointer;
             font-weight: bold;
             letter-spacing: 2px;
             transition: .3s;
         }
         button:hover{
-            transform: scale(1.05);
-            box-shadow: 3px 3px 2px #bbb;
+            transform: translate(-5px, -3px);
+            box-shadow: 5px 3px var(--btt-hvr-color);
         }
         button:active{
-            transform: scale(0.95);
-            box-shadow: inset 5px 5px 2px #bbb;
+            transform: translate(5px, 3px);
+            box-shadow: -5px -3px var(--btt-hvr-color),
+                        inset -5px -3px  var(--bg-color);
         }
     </style>
     <title>Botao</title>
 </head>
 
 <body>
+    <label for="dark-mode">
+        <input type="checkbox" name="dark-mode" id="dark-mode"> Dark Mode
+    </label>
     <div class="content">
+        
         <div class="text">
             <h1 id="texto">Começar Série</h1>
         </div>

@@ -1,6 +1,13 @@
 const zerar = document.getElementById("zerar")
 const somar = document.getElementById("sum")
 const texto = document.getElementById("texto")
+const checkbox = document.querySelector("#dark-mode")
+const html = document.querySelector("html")
+const content = document.querySelector(".content")
+
+checkbox.addEventListener("change", () => {
+    html.classList.toggle("dark_mode")
+})
 
 somar.addEventListener("click", () => {
     const text = texto.innerText
@@ -12,5 +19,12 @@ somar.addEventListener("click", () => {
 })
 zerar.addEventListener("click", () => {
     texto.innerText = "Série zerada"
-    setTimeout(() => {texto.innerText = "Começar Série"}, 700)
+    content.classList.remove("up-content")
+    content.classList.add("down-content")
+        setTimeout(() => {
+        texto.innerText = "Começar Série";
+        content.classList.remove("down-content")
+        content.classList.add("up-content")}
+        , 700)
+    
 })
